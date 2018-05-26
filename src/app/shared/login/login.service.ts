@@ -5,7 +5,7 @@ import { Observable } from 'rxjs/Observable';
 @Injectable()
 export class LoginService {
 
-  public API = '//localhost:8080';
+  public API = '//localhost:8080/login';
 
   constructor(private http: HttpClient) {
   }
@@ -14,7 +14,7 @@ export class LoginService {
     return this.http.get('//localhost:8080/login');
   }
 
-  save(login: any): Observable<any> {
+  login(login: any): Observable<any> {
     let result: Observable<Object>;
     result = this.http.post(this.API, login);
     return result;

@@ -13,6 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { TelaLoginComponent } from './tela-login/tela-login.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import { TelaLoginComponent } from './tela-login/tela-login.component';
     AccordionModule,
     BrowserAnimationsModule,
     InputTextModule,
+    FormsModule,
     ButtonModule,
     CardModule,
     HttpClientModule

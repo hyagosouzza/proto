@@ -5,13 +5,13 @@ import { Observable } from 'rxjs/Observable';
 @Injectable()
 export class LoginService {
 
-  public API = '//localhost:8080/login';
+  public API = '//192.168.1.4:8080/login';
 
   constructor(private http: HttpClient) {
   }
 
   getAll(): Observable<any> {
-    return this.http.get('//localhost:8080/login');
+    return this.http.get('//192.168.1.4:8080/login');
   }
 
   login(login: any): Observable<any> {

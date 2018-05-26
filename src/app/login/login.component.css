@@ -1,0 +1,18 @@
+.nome-login {
+    color: #2399e5;
+}
+
+.ui-float-label {
+    margin-top: 20px;
+}
+
+.div-login {
+    display: flex;
+    justify-content: center;
+    padding-top: 25vh;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+}

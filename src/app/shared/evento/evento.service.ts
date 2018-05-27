@@ -12,7 +12,7 @@ export class EventoService {
   }
 
   getAll(): Observable<any> {
-    return this.http.get('//192.168.1.167:8080/eventno');
+    return this.http.get('//192.168.1.167:8080/evento');
   }
 
   evento(evento: any): Observable<any> {

@@ -20,7 +20,7 @@ export class HomeComponent implements OnInit {
   { label: 'Forma de Notificação', icon: 'fa-envelope', command: () => { this.click(); } },
   { label: 'Privacidade', icon: 'fa-user-secret', routerLink: ['/theming'] },
   { label: 'Ajuda', icon: 'fa-question', url: 'http://angular.io' },
-  { label: 'Logout', icon: 'fa-sign-out', url: 'login' } ];
+  { label: 'Logout', icon: 'fa-sign-out', url: 'login' }];
 
   itemsAdm: MenuItem[] = [{ label: 'Configuração', icon: 'fa-cogs', routerLink: ['/theming'] },
   { label: 'Forma de Notificação', icon: 'fa-envelope', command: () => { this.click(); } },
@@ -33,13 +33,13 @@ export class HomeComponent implements OnInit {
 
   menItens: MenuItem[];
 
-  opInst: MenuItem[] = [{ label: 'Unidade', command: () => { this.filterByName('UNIDADE'); }},
-  { label: 'Curso', command: () => { this.filterByName('CURSO'); }},
-   { label: 'Regional', command: () => { this.filterByName('REGIONAL'); }}];
+  opInst: MenuItem[] = [{ label: 'UNIDADE'},
+  { label: 'CURSO'},
+  { label: 'REGIONAL'}];
 
   opArea: MenuItem[];
 
-  opFilter: MenuItem[] = [];
+  opFilter: MenuItem[];
 
   display: boolean = false;
 
@@ -117,14 +117,12 @@ export class HomeComponent implements OnInit {
     this.display2 = true;
   }
 
-  filterByName(string) {
-    console.log(string);
-    console.log(this.options);
-    for(let n = 0; n < this.options.length; n++) {
-      console.log(this.options[n].tipo);
-      if(this.options[n].tipo === string) {
-        this.opFilter = [{label: this.options[n].nome}];
-      } 
+  filterByName(insta) {
+    console.log(insta.label);
+    for (let n = 0; n < this.options.length; n++) {
+      if (this.options[n].tipo === insta.label) {
+        this.opFilter = [{ label: this.options[n].nome }];
+      }
     }
   }
 }

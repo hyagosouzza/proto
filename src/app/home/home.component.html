@@ -84,7 +84,7 @@
           </div>
           <div class="col-2">
             <h3>Enviar para</h3>
-            <p-dropdown [options]="opInst" placeholder="Enviar " optionLabel="label" [showClear]="true" (click)="filterByName('CURSO')"></p-dropdown>
+            <p-dropdown [options]="opInst" placeholder="Enviar " optionLabel="label" [showClear]="true" [(ngModel)]="insta" name="insta" (click)="filterByName(insta)"></p-dropdown>
             <p-dropdown [options]="opFilter" placeholder="para" optionLabel="label" [showClear]="true" [(ngModel)]="event.inst" required
               name="inst" #inst></p-dropdown>
           </div>

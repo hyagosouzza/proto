@@ -21,4 +21,10 @@ export class EventoService {
     return result;
   }
 
+  getEventos(): Observable<any> {
+    let result: Observable<Object>;
+    result = this.http.get(this.API + 'evento/');
+    return result;
+  }
+
 }

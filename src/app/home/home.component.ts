@@ -12,6 +12,7 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  para: boolean = false;
 
   event: any = {};
 
@@ -19,26 +20,26 @@ export class HomeComponent implements OnInit {
   { label: 'Forma de Notificação', icon: 'fa-envelope', command: () => { this.click(); } },
   { label: 'Privacidade', icon: 'fa-user-secret', routerLink: ['/theming'] },
   { label: 'Ajuda', icon: 'fa-question', url: 'http://angular.io' },
-  { label: 'Logout', icon: 'fa-sign-out', url: 'login' } 
-  ];
+  { label: 'Logout', icon: 'fa-sign-out', url: 'login' } ];
 
   itemsAdm: MenuItem[] = [{ label: 'Configuração', icon: 'fa-cogs', routerLink: ['/theming'] },
   { label: 'Forma de Notificação', icon: 'fa-envelope', command: () => { this.click(); } },
   { label: 'Privacidade', icon: 'fa-user-secret', routerLink: ['/theming'] },
-  { label: 'Aprovar Eventos', icon: 'fa-user-secret', url: 'eventos' },
+  { label: 'Aprovar Eventos', icon: 'fa-user-secret', command: () => {this.aprovar();} },
   { label: 'Ajuda', icon: 'fa-question', url: 'http://angular.io' },
-  { label: 'Logout', icon: 'fa-sign-out', url: 'login' }
-  ];
+  { label: 'Logout', icon: 'fa-sign-out', url: 'login' }];
 
   msgs: Message[] = [];
 
   menItens: MenuItem[];
 
-  opInst: MenuItem[] = [{ label: 'Unidade'}, { label: 'Curso'}, { label: 'Regional'}];
+  opInst: MenuItem[] = [{ label: 'Unidade', command: () => { this.filterByName('UNIDADE'); }},
+  { label: 'Curso', command: () => { this.filterByName('CURSO'); }},
+   { label: 'Regional', command: () => { this.filterByName('REGIONAL'); }}];
 
   opArea: MenuItem[];
 
-  opFilter: MenuItem[];
+  opFilter: MenuItem[] = [];
 
   display: boolean = false;
 
@@ -52,7 +53,9 @@ export class HomeComponent implements OnInit {
 
   options: any = {};
 
-  val: string;
+  noticias: boolean = false;
+
+  eventos: boolean = true;
 
   constructor(private id: LoginService, private eventoService: EventoService, private optionsService: OptionsService) { }
 
@@ -66,6 +69,7 @@ export class HomeComponent implements OnInit {
     this.msgs.push({ severity: 'info', summary: 'Eventos', detail: 'Mensagens Novas' });
 
     this.id.getId(this.id.id).subscribe(result => {
+      console.log("function");
       if (result.gerencia.length === 0) {
         this.items = this.items;
       }
@@ -74,13 +78,12 @@ export class HomeComponent implements OnInit {
 
       }
       this.nome = result.nome;
+      console.log(this.items);
     }, error => console.error(error));
 
     this.optionsService.getOptions().subscribe(result => {
       console.log(result);
       this.options = result;
-      this.filter = true;
-      this.opFilter = [ { label: result[0].nome}];
     }, error => console.error(error));
 
     this.menItens = [
@@ -116,5 +119,21 @@ export class HomeComponent implements OnInit {
 
   showDialog2() {
     this.display2 = true;
+  }
+
+  aprovar(){
+    this.noticias = !this.noticias;
+    this.eventos = !this.eventos;
+  }
+
+  filterByName(string) {
+    console.log(string);
+    console.log(this.options);
+    for(let n = 0; n < this.options.length; n++) {
+      console.log(this.options[n].tipo);
+      if(this.options[n].tipo === string) {
+        this.opFilter = [{label: this.options[n].nome}];
+      } 
+    }
   }
 }

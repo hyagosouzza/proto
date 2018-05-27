@@ -17,6 +17,9 @@ import {DialogModule} from 'primeng/dialog';
 import {RadioButtonModule} from 'primeng/radiobutton';
 import {PanelMenuModule} from 'primeng/panelmenu';
 import {DropdownModule} from 'primeng/dropdown';
+import {InputTextareaModule} from 'primeng/inputtextarea';
+import {GrowlModule} from 'primeng/growl';
+
 
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
@@ -48,7 +51,9 @@ import { EventosComponent } from './eventos/eventos.component';
     DialogModule,
     RadioButtonModule,
     PanelMenuModule,
-    DropdownModule
+    DropdownModule,
+    InputTextareaModule,
+    GrowlModule
   ],
   providers: [LoginService],
   bootstrap: [AppComponent]

@@ -1,7 +1,10 @@
+import { OptionsService } from './../shared/option/options.service';
+import { EventoService } from './../shared/evento/evento.service';
 import { Component, OnInit, Input } from '@angular/core';
 import { MenuItem } from 'primeng/api';                 //api
 import { LoginService } from '../shared/login/login.service';
-import {Message} from 'primeng/components/common/api';
+import { Message } from 'primeng/components/common/api';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-home',
@@ -9,6 +12,8 @@ import {Message} from 'primeng/components/common/api';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+
+  event: any = {};
 
   items: MenuItem[] = [{ label: 'Configuração', icon: 'fa-cogs', routerLink: ['/theming'] },
   { label: 'Forma de Notificação', icon: 'fa-envelope', command: () => { this.click(); } },
@@ -27,19 +32,34 @@ export class HomeComponent implements OnInit {
 
   menItens: MenuItem[];
 
+  opInst: MenuItem[] = [{ label: 'Unidade'}, { label: 'Curso'}, { label: 'Regional'}];
+
+  opArea: MenuItem[];
+
+  opFilter: MenuItem[];
+
   display: boolean = false;
 
   display2: boolean = false;
 
   acesso: number;
 
-  val1: string;
-
   nome = "Nome";
 
-  constructor(private id: LoginService) { }
+  filter: boolean = false;
+
+  options: any = {};
+
+  val: string;
+
+  constructor(private id: LoginService, private eventoService: EventoService, private optionsService: OptionsService) { }
+
+  evento(form: NgForm) {
+    this.eventoService.evento(form).subscribe(result => { }, error => console.error(error));
+  }
 
   ngOnInit() {
+
     this.msgs = [];
     this.msgs.push({ severity: 'info', summary: 'Eventos', detail: 'Mensagens Novas' });
 
@@ -52,6 +72,13 @@ export class HomeComponent implements OnInit {
 
       }
       this.nome = result.nome;
+    }, error => console.error(error));
+
+    this.optionsService.getOptions().subscribe(result => {
+      console.log(result);
+      this.options = result;
+      this.filter = true;
+      this.opFilter = [ { label: result[0].nome}];
     }, error => console.error(error));
 
     this.menItens = [
@@ -68,8 +95,10 @@ export class HomeComponent implements OnInit {
       },
       { label: 'Adicionar notíticas e informações', icon: 'fa-newspaper-o' }
     ]
-  }
 
+    this.opArea = []
+
+  }
 
   click() {
     this.showDialog();

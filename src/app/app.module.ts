@@ -1,3 +1,5 @@
+import { OptionsService } from './shared/option/options.service';
+import { EventoService } from './shared/evento/evento.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AccordionModule } from 'primeng/accordion';     //accordion and accordion tab
@@ -55,7 +57,7 @@ import { EventosComponent } from './eventos/eventos.component';
     InputTextareaModule,
     GrowlModule
   ],
-  providers: [LoginService],
+  providers: [LoginService, EventoService, OptionsService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

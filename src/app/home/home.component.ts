@@ -25,7 +25,7 @@ export class HomeComponent implements OnInit {
   itemsAdm: MenuItem[] = [{ label: 'Configuração', icon: 'fa-cogs', routerLink: ['/theming'] },
   { label: 'Forma de Notificação', icon: 'fa-envelope', command: () => { this.click(); } },
   { label: 'Privacidade', icon: 'fa-user-secret', routerLink: ['/theming'] },
-  { label: 'Aprovar Eventos', icon: 'fa-user-secret', url: 'eventos' },
+  { label: 'Aprovar Eventos', icon: 'fa-user-secret', command: () => { this.aprovar(); } },
   { label: 'Ajuda', icon: 'fa-question', url: 'http://angular.io' },
   { label: 'Logout', icon: 'fa-sign-out', url: 'login' }];
 
@@ -33,9 +33,9 @@ export class HomeComponent implements OnInit {
 
   menItens: MenuItem[];
 
-  opInst: MenuItem[] = [{ label: 'UNIDADE'},
-  { label: 'CURSO'},
-  { label: 'REGIONAL'}];
+  opInst: MenuItem[] = [{ label: 'UNIDADE' },
+  { label: 'CURSO' },
+  { label: 'REGIONAL' }];
 
   opArea: MenuItem[];
 
@@ -52,6 +52,10 @@ export class HomeComponent implements OnInit {
   filter: boolean = false;
 
   options: any = {};
+
+  noticias: boolean = false;
+
+  eventos: boolean = true;
 
   constructor(private id: LoginService, private eventoService: EventoService, private optionsService: OptionsService) { }
 
@@ -115,6 +119,11 @@ export class HomeComponent implements OnInit {
 
   showDialog2() {
     this.display2 = true;
+  }
+
+  aprovar() {
+    this.noticias = !this.noticias;
+    this.eventos = !this.eventos;
   }
 
   filterByName(insta) {

@@ -26,6 +26,7 @@ import { FormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { EventosComponent } from './eventos/eventos.component';
+import { AdmComponent } from './adm/adm.component';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { EventosComponent } from './eventos/eventos.component';
     AppComponent,
     LoginComponent,
     HomeComponent,
-    EventosComponent
+    EventosComponent,
+    AdmComponent
   ],
   imports: [
     BrowserModule,

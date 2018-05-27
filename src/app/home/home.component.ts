@@ -14,14 +14,16 @@ export class HomeComponent implements OnInit {
   { label: 'Forma de Notificação', icon: 'fa-envelope', command: () => { this.click(); } },
   { label: 'Privacidade', icon: 'fa-user-secret', routerLink: ['/theming'] },
   { label: 'Ajuda', icon: 'fa-question', url: 'http://angular.io' },
-  { label: 'Logout', icon: 'fa-sign-out', url: 'login' }];
+  { label: 'Logout', icon: 'fa-sign-out', url: 'login' } 
+  ];
 
   itemsAdm: MenuItem[] = [{ label: 'Configuração', icon: 'fa-cogs', routerLink: ['/theming'] },
   { label: 'Forma de Notificação', icon: 'fa-envelope', command: () => { this.click(); } },
   { label: 'Privacidade', icon: 'fa-user-secret', routerLink: ['/theming'] },
   { label: 'Aprovar Eventos', icon: 'fa-user-secret', url: 'eventos' },
   { label: 'Ajuda', icon: 'fa-question', url: 'http://angular.io' },
-  { label: 'Logout', icon: 'fa-sign-out', url: 'login' }];
+  { label: 'Logout', icon: 'fa-sign-out', url: 'login' }
+  ];
 
   msgs: Message[] = [];
 

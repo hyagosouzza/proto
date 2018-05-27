@@ -5,14 +5,14 @@ import { Observable } from 'rxjs/Observable';
 @Injectable()
 export class EventoService {
 
-  public API = '//192.168.1.4:8080/';
+  public API = '//192.168.1.167:8080/';
   public eventoAPI = this.API + 'evento';
 
   constructor(private http: HttpClient) {
   }
 
   getAll(): Observable<any> {
-    return this.http.get('//192.168.1.4:8080/eventno');
+    return this.http.get('//192.168.1.167:8080/eventno');
   }
 
   evento(evento: any): Observable<any> {

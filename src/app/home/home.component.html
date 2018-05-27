@@ -1,31 +1,27 @@
-<div class="ui-g">
-  <p-toolbar class="ui-g-12 ui-md-12 ui-lg-12">
-    <div class="ui-toolbar-group-left">
-      <h3>Sempre UFG</h3>
-    </div>
+<p-toolbar>
+  <div class="ui-toolbar-group-left">
+    <h3>Sempre UFG</h3>
+  </div>
 
-    <div class="ui-toolbar-group-right" margin="10vh">
-      <p-splitButton label="Usuário" icon="fa-user" [model]="items"></p-splitButton>
-      <p-dialog header="Forma de Notificação" [(visible)]="display" [modal]="true">
-        <div class="ui-g" style="width:250px;margin-bottom:10px">
-          <div class="ui-g-12">
-            <p-radioButton name="group1" value="diaria" label="Diária"  inputId="opt1"></p-radioButton>
-          </div>
-          <div class="ui-g-12">
-            <p-radioButton name="group1" value="todevento" label="Todo Evento"  inputId="opt2"></p-radioButton>
-          </div>
-          <div class="ui-g-12">
-            <p-radioButton name="group1" value="desativada" label="Desativada" [(ngModel)]="val1" inputId="opt2"></p-radioButton>
-          </div>
+  <div class="ui-toolbar-group-right" margin="10vh">
+    <p-dialog header="Forma de Notificação" [(visible)]="display" [modal]="true">
+      <div class="ui-g" style="width:250px;margin-bottom:10px">
+        <div class="ui-g-12">
+          <p-radioButton name="group1" value="diaria" label="Diária" inputId="opt1"></p-radioButton>
         </div>
-      </p-dialog>
-      <p-splitButton label={{nome}} icon="fa-user" [model]="items"></p-splitButton>
-    </div>
-  </p-toolbar>
-</div>
+        <div class="ui-g-12">
+          <p-radioButton name="group1" value="todevento" label="Todo Evento" inputId="opt2"></p-radioButton>
+        </div>
+        <div class="ui-g-12">
+          <p-radioButton name="group1" value="desativada" label="Desativada" [(ngModel)]="val1" inputId="opt2"></p-radioButton>
+        </div>
+      </div>
+    </p-dialog>
+    <p-splitButton label={{nome}} icon="fa-user" [model]="items"></p-splitButton>
+  </div>
+</p-toolbar>
 
-<div class="ui-g">
-  <p-panelMenu [model]="menItens" [style]="{'width':'300px'}" class="ui-g-12 ui-md-6 ui-lg-3"></p-panelMenu>
+  <p-panelMenu [model]="menItens" [style]="{'width':'300px'}"></p-panelMenu>
   <form #eventForm="ngForm" (ngSubmit)="evento(eventForm.value)">
     <p-dialog header="Divulgar Evento" [(visible)]="display2" [modal]="true" [responsive]="true" [width]="700" [minWidth]="200"
       [minY]="70">
@@ -37,60 +33,70 @@
           </div>
           <div class="col-2">
             <h3>Escopo da Divulgação</h3>
-            <p-radioButton name="group2" value="apegresso" label="Apenas Egresso" inputId="opt1" [(ngModel)]="event.escopo" required name="escopo" #escopo></p-radioButton>
+            <p-radioButton name="group2" value="apegresso" label="Apenas Egresso" inputId="opt1" [(ngModel)]="event.escopo" required
+              name="escopo" #escopo></p-radioButton>
             <br>
-            <p-radioButton name="group2" value="comunidade" label="Comunidade" inputId="opt1" [(ngModel)]="event.escopo" required name="escopo" #escopo></p-radioButton>
+            <p-radioButton name="group2" value="comunidade" label="Comunidade" inputId="opt1" [(ngModel)]="event.escopo" required name="escopo"
+              #escopo></p-radioButton>
             <br>
-            <p-radioButton name="group2" value="forescopo" label="Fora de Escopo" inputId="opt1" [(ngModel)]="event.escopo" required name="escopo" #escopo></p-radioButton>
+            <p-radioButton name="group2" value="forescopo" label="Fora de Escopo" inputId="opt1" [(ngModel)]="event.escopo" required
+              name="escopo" #escopo></p-radioButton>
           </div>
         </div>
         <div class="row-1">
           <div class="col-1">
             <h3>Tipo Evento</h3>
-            <p-radioButton name="group3" value="noticia" label="Notícia"  inputId="opt2" [(ngModel)]="event.tipo" required name="tipo" #tipo></p-radioButton>
+            <p-radioButton name="group3" value="noticia" label="Notícia" inputId="opt2" [(ngModel)]="event.tipo" required name="tipo"
+              #tipo></p-radioButton>
             <br>
-            <p-radioButton name="group3" value="palestra" label="Palestra"  inputId="opt2" [(ngModel)]="event.tipo" required name="tipo" #tipo></p-radioButton>
+            <p-radioButton name="group3" value="palestra" label="Palestra" inputId="opt2" [(ngModel)]="event.tipo" required name="tipo"
+              #tipo></p-radioButton>
             <br>
-            <p-radioButton name="group3" value="curso" label="Curso"  inputId="opt2" [(ngModel)]="event.tipo" required name="tipo" #tipo></p-radioButton>
+            <p-radioButton name="group3" value="curso" label="Curso" inputId="opt2" [(ngModel)]="event.tipo" required name="tipo" #tipo></p-radioButton>
             <br>
-            <p-radioButton name="group3" value="emprego" label="Orp. Emprego"  inputId="opt2" [(ngModel)]="event.tipo" required name="tipo" #tipo></p-radioButton>
+            <p-radioButton name="group3" value="emprego" label="Orp. Emprego" inputId="opt2" [(ngModel)]="event.tipo" required name="tipo"
+              #tipo></p-radioButton>
             <br>
-            <p-radioButton name="group3" value="diversos" label="Diversos"  inputId="opt2" [(ngModel)]="event.tipo" required name="tipo" #tipo></p-radioButton>
+            <p-radioButton name="group3" value="diversos" label="Diversos" inputId="opt2" [(ngModel)]="event.tipo" required name="tipo"
+              #tipo></p-radioButton>
             <br>
           </div>
           <div class="col-2">
             <h3>Área de Conhecimento</h3>
-            <p-dropdown [options]="opArea" placeholder="Área de Conhecimento" optionLabel="label" [showClear]="true" [(ngModel)]="event.area" required name="area" #area></p-dropdown>
+            <p-dropdown [options]="opArea" placeholder="Área de Conhecimento" optionLabel="label" [showClear]="true" [(ngModel)]="event.area"
+              required name="area" #area></p-dropdown>
           </div>
         </div>
         <div class="row-1">
           <div class="col-1">
             <h3>Forma de Divulgação</h3>
-            <p-radioButton name="group4" value="mensagem" label="Mensagem"  inputId="opt3" [(ngModel)]="event.forma" required name="forma" #forma></p-radioButton>
+            <p-radioButton name="group4" value="mensagem" label="Mensagem" inputId="opt3" [(ngModel)]="event.forma" required name="forma"
+              #forma></p-radioButton>
             <br>
-            <p-radioButton name="group4" value="noticia" label="Noticia"  inputId="opt3" [(ngModel)]="event.forma" required name="forma" #forma></p-radioButton>
+            <p-radioButton name="group4" value="noticia" label="Noticia" inputId="opt3" [(ngModel)]="event.forma" required name="forma"
+              #forma></p-radioButton>
             <br>
-            <p-radioButton name="group4" value="ambos" label="Ambos"  inputId="opt3" [(ngModel)]="event.forma" required name="forma" #forma></p-radioButton>
+            <p-radioButton name="group4" value="ambos" label="Ambos" inputId="opt3" [(ngModel)]="event.forma" required name="forma" #forma></p-radioButton>
             <br>
-            <p-radioButton name="group4" value="nenhuma" label="Nenhuma"  inputId="opt3" [(ngModel)]="event.forma" required name="forma" #forma></p-radioButton>
+            <p-radioButton name="group4" value="nenhuma" label="Nenhuma" inputId="opt3" [(ngModel)]="event.forma" required name="forma"
+              #forma></p-radioButton>
             <br>
           </div>
           <div class="col-2">
             <h3>Enviar para</h3>
-            <p-dropdown [options]="opInst" placeholder="Enviar " optionLabel="label" [showClear]="true" [(ngModel)]="val"></p-dropdown>
-            <p-dropdown *ngIf='filter' [options]="opFilter" placeholder="para" optionLabel="label" [showClear]="true" [(ngModel)]="event.inst" required name="inst" #inst></p-dropdown>
+            <p-dropdown [options]="opInst" placeholder="Enviar " optionLabel="label" [showClear]="true" (click)="filterByName('CURSO')"></p-dropdown>
+            <p-dropdown [options]="opFilter" placeholder="para" optionLabel="label" [showClear]="true" [(ngModel)]="event.inst" required
+              name="inst" #inst></p-dropdown>
           </div>
         </div>
         <div class="row-2">
           <h3>Descrição</h3>
           <textarea rows="5" cols="80" pInputTextarea [(ngModel)]="event.descri" required name="descri" #descri></textarea>
         </div>
-        <button pButton type="button" label="Entrar" type="submit"
-        [disabled]="!eventForm.form.valid"></button>
+        <button pButton type="button" label="Entrar" type="submit" [disabled]="!eventForm.form.valid"></button>
       </div>
     </p-dialog>
   </form>
 
-  <app-eventos class="ui-g-12 ui-md-6 ui-lg-9"></app-eventos>
-  <p-growl [style]="{'padding-top':'10vh'}" [(value)]="msgs" sticky=true></p-growl>
-</div>
+  <app-eventos></app-eventos>
+  <p-growl [style]="{'margin-top':'10vh'}" [(value)]="msgs" sticky=true></p-growl>

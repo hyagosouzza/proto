@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { MenuItem } from 'primeng/api';                 //api
 import { LoginService } from '../shared/login/login.service';
+import {Message} from 'primeng/components/common/api';
 
 @Component({
   selector: 'app-home',
@@ -22,6 +23,7 @@ export class HomeComponent implements OnInit {
   { label: 'Ajuda', icon: 'fa-question', url: 'http://angular.io' },
   { label: 'Logout', icon: 'fa-sign-out', url: 'login' }];
 
+  msgs: Message[] = [];
 
   menItens: MenuItem[];
 
@@ -38,6 +40,8 @@ export class HomeComponent implements OnInit {
   constructor(private id: LoginService) { }
 
   ngOnInit() {
+    this.msgs = [];
+    this.msgs.push({ severity: 'info', summary: 'Eventos', detail: 'Mensagens Novas' });
 
     this.id.getId(this.id.id).subscribe(result => {
       if (result.gerencia.length === 0) {

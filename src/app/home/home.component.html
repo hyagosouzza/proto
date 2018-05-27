@@ -74,7 +74,11 @@
           <p-dropdown [options]="menItens" [(ngModel)]="selectedCity" placeholder="Instância Administrativa" optionLabel="label" [showClear]="true"></p-dropdown>
       </div>
     </div>
+    <div class="row-2">
+      <h3>Descrição</h3>
+      <textarea rows="5" cols="80" pInputTextarea></textarea>
+    </div>
   </div>
 </p-dialog>
 
-<app-eventos></app-eventos>
+<p-growl [(value)]="msgs" sticky=true></p-growl>

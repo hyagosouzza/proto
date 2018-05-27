@@ -5,6 +5,7 @@
     </div>
 
     <div class="ui-toolbar-group-right" margin="10vh">
+      <p-splitButton label="Usuário" icon="fa-user" [model]="items"></p-splitButton>
       <p-dialog header="Forma de Notificação" [(visible)]="display" [modal]="true">
         <div class="ui-g" style="width:250px;margin-bottom:10px">
           <div class="ui-g-12">
@@ -12,6 +13,9 @@
           </div>
           <div class="ui-g-12">
             <p-radioButton name="group1" value="todevento" label="Todo Evento"  inputId="opt2"></p-radioButton>
+          </div>
+          <div class="ui-g-12">
+            <p-radioButton name="group1" value="desativada" label="Desativada" [(ngModel)]="val1" inputId="opt2"></p-radioButton>
           </div>
         </div>
       </p-dialog>

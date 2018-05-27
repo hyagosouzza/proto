@@ -1,0 +1,38 @@
+<div id="navbar">
+  <p-toolbar>
+    <div class="ui-toolbar-group-left">
+      <h3>Sempre UFG</h3>
+    </div>
+
+    <div class="ui-toolbar-group-right" margin="10vh">
+      <p-splitButton label="Administrador" icon="fa-user" [model]="items"></p-splitButton>
+      <p-dialog header="Forma de Notificação" [modal]="true">
+        <div class="ui-g" style="width:250px;margin-bottom:10px">
+          <div class="ui-g-12">
+            <p-radioButton name="group1" value="diaria" label="Diária" [(ngModel)]="val1" inputId="opt1"></p-radioButton>
+          </div>
+          <div class="ui-g-12">
+            <p-radioButton name="group1" value="todevento" label="Todo Evento" [(ngModel)]="val1" inputId="opt2"></p-radioButton>
+          </div>
+          <div class="ui-g-12">
+            <p-radioButton name="group1" value="desativada" label="Desativada" [(ngModel)]="val1" inputId="opt2"></p-radioButton>
+          </div>
+        </div>
+      </p-dialog>
+    </div>
+  </p-toolbar>
+</div>
+
+<div class="ui-g">
+  <div class="ui-g-4">
+    <p-panelMenu [model]="menItens" [style]="{'width':'300px'}"></p-panelMenu>
+  </div>
+  <div class="ui-g-8">
+    <div *ngIf="display">
+      
+    </div>
+    <div *ngIf="display2">
+      
+    </div>
+  </div>
+</div>

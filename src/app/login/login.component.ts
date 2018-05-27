@@ -20,10 +20,11 @@ export class LoginComponent{
   
     login(form: NgForm) {
       this.loginService.login(form).subscribe(result => {
-        if (result.cpf === null) {
-          console.log('iti malia');
+        if (result.length === 0) {
+          console.log(result);
         }
         else {
+          console.log(result);
           this.goto();
         }
       }, error => console.error(error));

@@ -11,6 +11,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class LoginComponent{
 
   user: any = {};
+  private email;
   
     constructor(private loginService: LoginService, private router: Router) { }
   
@@ -20,7 +21,7 @@ export class LoginComponent{
   
     login(form: NgForm) {
       this.loginService.login(form).subscribe(result => {
-        if (result.cpf === null) {
+        if (result.length === 0) {
           console.log('iti malia');
         }
         else {

@@ -11,18 +11,26 @@ import { LoginService } from './shared/login/login.service';
 import { HttpClientModule } from '@angular/common/http';
 import { MenubarModule } from 'primeng/menubar';
 import { ROUTING } from "./app.routing";
+import {ToolbarModule} from 'primeng/toolbar';
+import {SplitButtonModule} from 'primeng/splitbutton';
+import {DialogModule} from 'primeng/dialog';
+import {RadioButtonModule} from 'primeng/radiobutton';
+import {PanelMenuModule} from 'primeng/panelmenu';
+import {DropdownModule} from 'primeng/dropdown';
 
 import { AppComponent } from './app.component';
-import { TelaLoginComponent } from './tela-login/tela-login.component';
 import { FormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
+import { HomeComponent } from './home/home.component';
+import { EventosComponent } from './eventos/eventos.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    TelaLoginComponent,
-    LoginComponent
+    LoginComponent,
+    HomeComponent,
+    EventosComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +42,13 @@ import { LoginComponent } from './login/login.component';
     CardModule,
     HttpClientModule,
     MenubarModule,
-    ROUTING
+    ROUTING,
+    ToolbarModule,
+    SplitButtonModule,
+    DialogModule,
+    RadioButtonModule,
+    PanelMenuModule,
+    DropdownModule
   ],
   providers: [LoginService],
   bootstrap: [AppComponent]

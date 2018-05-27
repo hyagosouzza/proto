@@ -1,0 +1,80 @@
+<div id="navbar">
+  <p-toolbar>
+    <div class="ui-toolbar-group-left">
+      <h3>Sempre UFG</h3>
+    </div>
+
+    <div class="ui-toolbar-group-right" margin="10vh">
+      <p-dialog header="Forma de Notificação" [(visible)]="display" [modal]="true">
+        <div class="ui-g" style="width:250px;margin-bottom:10px">
+          <div class="ui-g-12">
+            <p-radioButton name="group1" value="diaria" label="Diária" [(ngModel)]="val1" inputId="opt1"></p-radioButton>
+          </div>
+          <div class="ui-g-12">
+            <p-radioButton name="group1" value="todevento" label="Todo Evento" [(ngModel)]="val1" inputId="opt2"></p-radioButton>
+          </div>
+        </div>
+      </p-dialog>
+      <p-splitButton label="Usuário" icon="fa-user" [model]="items"></p-splitButton>
+    </div>
+  </p-toolbar>
+</div>
+
+<p-panelMenu [model]="menItens" [style]="{'width':'300px'}"></p-panelMenu>
+<p-dialog header="Divulgar Evento" [(visible)]="display2" [modal]="true" [responsive]="true" [width]="700" [minWidth]="200"
+  [minY]="70">
+  <div style="width:500px;margin-bottom:10px">
+    <div class="row-1">
+      <div class="col-1">
+        <h3>Assunto</h3>
+        <input type="text" pInputText placeholder="Assunto">
+      </div>
+      <div class="col-2">
+          <h3>Escopo da Divulgação</h3>
+          <p-radioButton name="group2" value="apegresso" label="Apenas Egresso" [(ngModel)]="val1" inputId="opt1"></p-radioButton>
+          <br>
+          <p-radioButton name="group2" value="comunidade" label="Comunidade" [(ngModel)]="val1" inputId="opt1"></p-radioButton>
+          <br>
+          <p-radioButton name="group2" value="forescopo" label="Fora de Escopo" [(ngModel)]="val1" inputId="opt1"></p-radioButton>
+      </div>
+    </div>
+    <div class="row-1">
+      <div class="col-1">
+        <h3>Tipo Evento</h3>
+        <p-radioButton name="group3" value="noticia" label="Notícia" [(ngModel)]="val1" inputId="opt1"></p-radioButton>
+        <br>
+        <p-radioButton name="group3" value="palestra" label="Palestra" [(ngModel)]="val1" inputId="opt1"></p-radioButton>
+        <br>
+        <p-radioButton name="group3" value="curso" label="Curso" [(ngModel)]="val1" inputId="opt1"></p-radioButton>
+        <br>
+        <p-radioButton name="group3" value="emprego" label="Orp. Emprego" [(ngModel)]="val1" inputId="opt1"></p-radioButton>
+        <br>
+        <p-radioButton name="group3" value="diversos" label="Diversos" [(ngModel)]="val1" inputId="opt1"></p-radioButton>
+        <br>
+      </div>
+      <div class="col-2">
+        <h3>Área de Conhecimento</h3>
+        <p-dropdown [options]="menItens" [(ngModel)]="selectedCity" placeholder="Área de Conhecimento" optionLabel="label" [showClear]="true"></p-dropdown>
+      </div>
+    </div>
+    <div class="row-1">
+      <div class="col-1">
+        <h3>Forma de Divulgação</h3>
+        <p-radioButton name="group4" value="mensagem" label="Mensagem" [(ngModel)]="val1" inputId="opt1"></p-radioButton>
+        <br>
+        <p-radioButton name="group4" value="noticia" label="Noticia" [(ngModel)]="val1" inputId="opt1"></p-radioButton>
+        <br>
+        <p-radioButton name="group4" value="ambos" label="Ambos" [(ngModel)]="val1" inputId="opt1"></p-radioButton>
+        <br>
+        <p-radioButton name="group4" value="nenhuma" label="Nenhuma" [(ngModel)]="val1" inputId="opt1"></p-radioButton>
+        <br>
+      </div>
+      <div class="col-2">
+          <h3>Instância Administrativa</h3>
+          <p-dropdown [options]="menItens" [(ngModel)]="selectedCity" placeholder="Instância Administrativa" optionLabel="label" [showClear]="true"></p-dropdown>
+      </div>
+    </div>
+  </div>
+</p-dialog>
+
+<app-eventos></app-eventos>

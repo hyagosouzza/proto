@@ -5,7 +5,11 @@ import { Observable } from 'rxjs/Observable';
 @Injectable()
 export class LoginService {
 
-  public API = '//192.168.1.4:8080/login';
+  public API = '//192.168.1.4:8080/';
+  public loginAPI = this.API + 'login';
+
+  public id;
+
 
   constructor(private http: HttpClient) {
   }
@@ -16,7 +20,14 @@ export class LoginService {
 
   login(login: any): Observable<any> {
     let result: Observable<Object>;
-    result = this.http.post(this.API, login);
+    result = this.http.post(this.loginAPI, login);
+    result.subscribe(user => {this.id = user[0].id});
+    return result;
+  }
+
+  getId(id: any): Observable<any> {
+    let result: Observable<Object>;
+    result = this.http.get(this.API + 'usuarios/' + id);
     return result;
   }
 }

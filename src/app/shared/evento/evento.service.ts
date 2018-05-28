@@ -15,12 +15,13 @@ export class EventoService {
     return this.http.get('//189.123.150.41:8080/eventoes');
   }
 
-  evento(evento: any, id: any, email: any, nome: any): Observable<any> {
+  evento(evento: any, id: any, email: any, nome: any, data: any): Observable<any> {
     let result: Observable<Object>;
     evento.idInstancia = id;
     console.log( evento.idInstancia);
     evento.emailSolicitante = email;
     evento.solicitante = nome;
+    evento.datetimeDivulgacao = data;
     result = this.http.post(this.eventoAPI, evento);
     console.log(result);
     return result;

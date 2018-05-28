@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { EventoService } from '../shared/evento/evento.service';
-import { ConfirmationService } from 'primeng/api';
 
 @Component({
   selector: 'app-eventos',
@@ -10,7 +9,7 @@ import { ConfirmationService } from 'primeng/api';
 export class EventosComponent implements OnInit {
   items: any;
 
-  constructor(private eventos: EventoService, private confirmationService: ConfirmationService) { }
+  constructor(private eventos: EventoService) { }
 
   aprovado: any;
 

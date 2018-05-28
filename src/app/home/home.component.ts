@@ -14,6 +14,7 @@ import { NgForm } from '@angular/forms';
 })
 export class HomeComponent implements OnInit {
   idInstancia: any;
+  itemsAprov: any;
   para: boolean = false;
 
   event: any = {};
@@ -65,6 +66,8 @@ export class HomeComponent implements OnInit {
 
   emailSolicitante: string;
 
+  isAdm: boolean = false;
+
   constructor(private id: LoginService, private eventoService: EventoService, private optionsService: OptionsService) { }
 
   evento(form: NgForm) {
@@ -78,6 +81,14 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
 
+    this.eventoService.getAll().subscribe(result => {
+      for(let n = 0; n < result.length; n++) {
+        if(result[0].aprovacao.aprovada === true) {
+          this.itemsAprov.push(result[0]);
+        }
+      }
+    }, error => console.error(error));
+
     this.msgs = [];
     this.msgs.push({ severity: 'info', summary: 'Eventos', detail: 'Mensagens Novas' });
 
@@ -87,10 +98,11 @@ export class HomeComponent implements OnInit {
       console.log("function");
       if (result.gerencia.length === 0) {
         this.items = this.items;
+        this.isAdm = false;
       }
       else {
         this.items = this.itemsAdm;
-
+        this.isAdm = true;
       }
       this.nome = result.nome;
       console.log(this.items);

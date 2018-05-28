@@ -97,7 +97,26 @@
     </form>
   </div>
   <div class="ui-g-8" *ngIf="eventos">
-    <app-eventos></app-eventos>
+    <app-eventos *ngIf="isAdm"></app-eventos>
+    <p-accordion *ngIf="!isAdm">
+      <div *ngFor="let item of itemsAprov">
+          <p-accordionTab header={{item.assunto}}>
+              <p>
+                  <b>Descrição</b>: {{item.descricao}}</p>
+              <p>
+                  <b>Tipo do Evento:</b> {{item.tipo}}</p>
+              <p>
+                  <b>Forma de Divulgação:</b> {{item.divulgacao}}</p>
+              <p>
+                  <b>Escopo da Divulgação:</b> {{item.escopo}}</p>
+              <p>
+                  <b>Data da Divulgação:</b> {{item.datetimeDivulgacao}}</p>
+              <p>
+                  <b>Nome Solicitante:</b> {{item.solicitante}}</p>
+              <p>
+                  <b>Email Solicitante:</b> {{item.emailSolicitante}}</p>
+      </div>
+  </p-accordion>
     <p-growl [style]="{'margin-top':'10vh'}" [(value)]="msgs" sticky=true></p-growl>
   </div>
   <div class="ui-g-8" *ngIf="noticias">

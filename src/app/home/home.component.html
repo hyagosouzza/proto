@@ -81,10 +81,10 @@
             </div>
             <div class="col-2">
               <h3>Enviar para</h3>
-              <p-dropdown [style]="{'min-width':'230px'}" [options]="opInst" placeholder="Enviar  " optionLabel="label" [showClear]="true" [(ngModel)]="insta" name="insta"
-                required (click)="filterByName(insta)"></p-dropdown>
-                <p-dropdown [style]="{'min-width':'230px'}" [options]="opFilter" optionLabel="label"
-                            [(ngModel)]="insta2" name="insta2" required (click)="filterByName2(insta2)"></p-dropdown>
+              <p-dropdown [style]="{'min-width':'230px'}" [options]="opInst" placeholder="Enviar  " optionLabel="label" [showClear]="true"
+                [(ngModel)]="insta" name="insta" required (click)="filterByName(insta)"></p-dropdown>
+              <p-dropdown [style]="{'min-width':'230px'}" [options]="opFilter" optionLabel="label" [(ngModel)]="insta2" name="insta2" required
+                (click)="filterByName2(insta2)"></p-dropdown>
             </div>
           </div>
           <div class="row-2">
@@ -100,23 +100,24 @@
     <app-eventos *ngIf="isAdm"></app-eventos>
     <p-accordion *ngIf="!isAdm">
       <div *ngFor="let item of itemsAprov">
-          <p-accordionTab header={{item.assunto}}>
-              <p>
-                  <b>Descrição</b>: {{item.descricao}}</p>
-              <p>
-                  <b>Tipo do Evento:</b> {{item.tipo}}</p>
-              <p>
-                  <b>Forma de Divulgação:</b> {{item.divulgacao}}</p>
-              <p>
-                  <b>Escopo da Divulgação:</b> {{item.escopo}}</p>
-              <p>
-                  <b>Data da Divulgação:</b> {{item.datetimeDivulgacao}}</p>
-              <p>
-                  <b>Nome Solicitante:</b> {{item.solicitante}}</p>
-              <p>
-                  <b>Email Solicitante:</b> {{item.emailSolicitante}}</p>
+        <p-accordionTab header={{item.assunto}}>
+          <p>
+            <b>Descrição</b>: {{item.descricao}}</p>
+          <p>
+            <b>Tipo do Evento:</b> {{item.tipo}}</p>
+          <p>
+            <b>Forma de Divulgação:</b> {{item.divulgacao}}</p>
+          <p>
+            <b>Escopo da Divulgação:</b> {{item.escopo}}</p>
+          <p>
+            <b>Data da Divulgação:</b> {{item.datetimeDivulgacao}}</p>
+          <p>
+            <b>Nome Solicitante:</b> {{item.solicitante}}</p>
+          <p>
+            <b>Email Solicitante:</b> {{item.emailSolicitante}}</p>
+        </p-accordionTab>
       </div>
-  </p-accordion>
+    </p-accordion>
     <p-growl [style]="{'margin-top':'10vh'}" [(value)]="msgs" sticky=true></p-growl>
   </div>
   <div class="ui-g-8" *ngIf="noticias">

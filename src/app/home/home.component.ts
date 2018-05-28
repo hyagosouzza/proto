@@ -14,7 +14,7 @@ import { NgForm } from '@angular/forms';
 })
 export class HomeComponent implements OnInit {
   idInstancia: any;
-  itemsAprov: any;
+  itemsAprov: any = [];
   para: boolean = false;
 
   event: any = {};
@@ -83,20 +83,18 @@ export class HomeComponent implements OnInit {
 
     this.eventoService.getAll().subscribe(result => {
       for(let n = 0; n < result.length; n++) {
-        if(result[0].aprovacao.aprovada === true) {
-          this.itemsAprov.push(result[0]);
+        if(result[n].aprovacao.aprovada === true) {
+          this.itemsAprov.push(result[n]);
         }
+        console.log(this.itemsAprov);
       }
     }, error => console.error(error));
 
     this.msgs = [];
-    this.msgs.push({ severity: 'info', summary: 'Eventos', detail: 'Mensagens Novas' });
+    this.msgs.push({ severity: 'info', summary: 'Alerta de Eventos', detail: 'Eventos Novos' });
 
     this.id.getId(this.id.id).subscribe(result => {
-      this.nomeSolicitante = result.nome;
-      this.emailSolicitante = result.email;
-      console.log("function");
-      if (result.gerencia.length === 0) {
+      if (result.gerencia == null) {
         this.items = this.items;
         this.isAdm = false;
       }
@@ -105,11 +103,9 @@ export class HomeComponent implements OnInit {
         this.isAdm = true;
       }
       this.nome = result.nome;
-      console.log(this.items);
     }, error => console.error(error));
 
     this.optionsService.getOptions().subscribe(result => {
-      console.log(result);
       this.options = result;
 
       for(let n = 0; n < result.length; n++) {
@@ -122,10 +118,6 @@ export class HomeComponent implements OnInit {
           this.regionais.push({label: result[n].nome, value: result[n].nome});
         }
       }
-
-      console.log(this.cursos);
-      console.log(this.unidades);
-      console.log(this.regionais);
 
     }, error => console.error(error));
 
@@ -172,7 +164,6 @@ export class HomeComponent implements OnInit {
       if(insta.value == "CURSO") {
         this.opFilter = this.cursos;
       } else if(insta.value == "UNIDADE") {
-        console.log(this.unidades)
         this.opFilter = this.unidades;
       } else {
         this.opFilter = this.regionais;

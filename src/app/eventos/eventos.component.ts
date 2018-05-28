@@ -11,7 +11,7 @@ export class EventosComponent implements OnInit {
 
   constructor(private eventos: EventoService) { }
 
-  aprovado: any;
+  aprovado: any = {};
 
   ngOnInit() {
     this.eventos.getAll().subscribe(eventObj => { console.log(eventObj), this.items = eventObj; });
@@ -24,10 +24,12 @@ export class EventosComponent implements OnInit {
   }
 
   confirm(id, parecer) {
+    console.log(id);
     this.aprovado.id = id;
     this.aprovado.aprovada = true;
     this.aprovado.parecer = parecer;
     this.eventos.sendAprov(this.aprovado).subscribe();
+    this.display = false;
   }
 
   decline(id, parecer) {
@@ -35,7 +37,6 @@ export class EventosComponent implements OnInit {
     this.aprovado.aprovada = false;
     this.aprovado.parecer = parecer;
     this.eventos.sendAprov(this.aprovado).subscribe();
+    this.display = false;
   }
-
-
 }

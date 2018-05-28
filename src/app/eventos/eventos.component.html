@@ -16,8 +16,8 @@
             <p>
                 <b>Email Solicitante:</b> {{item.emailSolicitante}}</p>
             <p-dialog header="Aprovar Evento" [(visible)]="display" [modal]="true" [responsive]="true" [width]="350" [minWidth]="200" [minY]="70">
-                <span>Tem certeza que deseja aprovar este evento? Deixe seu parecer.</span>
-                <textarea [rows]="5" [cols]="30" pInputTextarea autoResize="autoResize" [(ngModel)]="property"></textarea>                
+                <span>Deseja aprovar este evento?</span>
+                <textarea [rows]="5" [cols]="30" pInputTextarea placeholder="Deixe seu parecer" autoResize="autoResize" [(ngModel)]="property"></textarea>                
                 <p-footer>
                     <button type="button" pButton icon="fa-check" (click)="confirm(item.id, property)" label="Sim"></button>
                     <button type="button" pButton icon="fa-close" (click)="decline(item.id, property)" label="Não"></button>

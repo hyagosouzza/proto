@@ -5,14 +5,14 @@ import { Observable } from 'rxjs/Observable';
 @Injectable()
 export class OptionsService {
 
-  public API = '//189.123.150.41:8080/';
+  public API = '//189.59.14.210:8484/';
   public optionsAPI = this.API + 'instancias';
 
   constructor(private http: HttpClient) {
   }
 
   getAll(): Observable<any> {
-    return this.http.get('//189.123.150.41:8080/instancias');
+    return this.http.get('//189.59.14.210:8484/instancias');
   }
 
   getOptions(): Observable<any> {

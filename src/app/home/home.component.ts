@@ -39,9 +39,7 @@ export class HomeComponent implements OnInit {
   { label: 'Curso', value: 'CURSO' },
   { label: 'Regional', value: 'REGIONAL' }];
 
-  opArea: SelectItem[];
-
-  opFilter: SelectItem[];
+  opFilter: SelectItem[] = [];
   opAux: SelectItem[];
 
   display: boolean = false;
@@ -55,6 +53,9 @@ export class HomeComponent implements OnInit {
   filter: boolean = false;
 
   options: any = {};
+  unidades: SelectItem[] = [{label: 'Selecionar Unidade', value: null}];
+  cursos: SelectItem[] = [{label: 'Selecionar Curso', value: null}];
+  regionais: SelectItem[] = [{label: 'Selecionar Regional', value: null}];
 
   noticias: boolean = false;
 
@@ -71,7 +72,9 @@ export class HomeComponent implements OnInit {
     var miliseconds = data.getTime() - 10800000;
     var dataConvertida = new Date(miliseconds);
     this.eventoService.evento(form, this.idInstancia, this.emailSolicitante, this.nomeSolicitante, dataConvertida).subscribe(result => { }, error => console.error(error));
+    this.display2 = false;
   }
+
 
   ngOnInit() {
 
@@ -96,6 +99,22 @@ export class HomeComponent implements OnInit {
     this.optionsService.getOptions().subscribe(result => {
       console.log(result);
       this.options = result;
+
+      for(let n = 0; n < result.length; n++) {
+        if (result[n].tipo == "UNIDADE") {
+          this.unidades.push({label: result[n].nome, value: result[n].nome});
+        } else if (result[n].tipo == "CURSO") {
+          this.cursos.push({label: result[n].nome, value: result[n].nome});
+        }
+        else if (result[n].tipo == "REGIONAL") {
+          this.regionais.push({label: result[n].nome, value: result[n].nome});
+        }
+      }
+
+      console.log(this.cursos);
+      console.log(this.unidades);
+      console.log(this.regionais);
+
     }, error => console.error(error));
 
     this.menItens = [
@@ -112,8 +131,6 @@ export class HomeComponent implements OnInit {
       },
       { label: 'Adicionar notíticas e informações', icon: 'fa-newspaper-o' }
     ]
-
-    this.opArea = []
 
   }
 
@@ -139,32 +156,27 @@ export class HomeComponent implements OnInit {
   }
 
   filterByName(insta) {
-    console.log(insta.value);
-
-    for (let n = 0; n < this.options.length; n++) {
-      if (this.options[n].tipo === insta.value) {
-        var item = { label: this.options[n].nome, value: this.options[n].nome };
-        this.opAux.push(item);
-      }
-      else {
-        this.opAux = null;
+    if(insta) {
+      if(insta.value == "CURSO") {
+        this.opFilter = this.cursos;
+      } else if(insta.value == "UNIDADE") {
+        console.log(this.unidades)
+        this.opFilter = this.unidades;
+      } else {
+        this.opFilter = this.regionais;
       }
     }
-    this.opFilter = this.opAux;
   }
 
   filterByName2(insta2) {
-    var n = 0;
-    for (n = 0; n < this.options.length; n++) {
-      if (this.options[n].nome === insta2.label) {
-        console.log('s');
-        this.idInstancia = this.options[n].id;
+    if(insta2) {
+      var n = 0;
+      for (n = 0; n < this.options.length; n++) {
+        if (this.options[n].nome == insta2.value) {
+          this.idInstancia = this.options[n].id;
+        }
       }
     }
-    if (n === this.options.length) {
-      console.log('tnc');
-      this.idInstancia = null;
-    }
-    insta2.label = insta2.value;
+    console.log("id = " + this.idInstancia);
   }
 }

@@ -12,7 +12,7 @@ export class EventoService {
   }
 
   getAll(): Observable<any> {
-    return this.http.get('//189.123.150.41:8080/eventoes');
+    return this.http.get('//189.123.150.41:8080/eventoes/getAll');
   }
 
   evento(evento: any, id: any, email: any, nome: any, data: any): Observable<any> {
@@ -23,6 +23,13 @@ export class EventoService {
     evento.solicitante = nome;
     evento.datetimeDivulgacao = data;
     result = this.http.post(this.eventoAPI, evento);
+    console.log(result);
+    return result;
+  }
+
+  sendAprov(aprovado: any) {
+    let result: Observable<Object>;
+    result = this.http.post(this.API + 'eventoes/aprovacao', aprovado);
     console.log(result);
     return result;
   }

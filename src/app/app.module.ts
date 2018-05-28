@@ -3,7 +3,7 @@ import { EventoService } from './shared/evento/evento.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AccordionModule } from 'primeng/accordion';     //accordion and accordion tab
-import { MenuItem } from 'primeng/api';                 //api
+import { MenuItem, ConfirmationService } from 'primeng/api';                 //api
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { InputTextModule } from 'primeng/inputtext';
 import { PasswordModule } from 'primeng/password';
@@ -21,6 +21,7 @@ import {PanelMenuModule} from 'primeng/panelmenu';
 import {DropdownModule} from 'primeng/dropdown';
 import {InputTextareaModule} from 'primeng/inputtextarea';
 import {GrowlModule} from 'primeng/growl';
+import {ConfirmDialogModule} from 'primeng/confirmdialog';
 
 
 import { AppComponent } from './app.component';
@@ -57,10 +58,12 @@ import { AdmComponent } from './adm/adm.component';
     PanelMenuModule,
     DropdownModule,
     InputTextareaModule,
-    GrowlModule
+    GrowlModule,
+    ConfirmDialogModule
+    
     
   ],
-  providers: [LoginService, EventoService, OptionsService],
+  providers: [LoginService, EventoService, OptionsService, ConfirmationService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

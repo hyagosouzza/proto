@@ -63,11 +63,6 @@
                 #tipo></p-radioButton>
               <br>
             </div>
-            <div class="col-2">
-              <h3>Área de Conhecimento</h3>
-              <p-dropdown [style]="{'min-width':'230px'}" [options]="opArea" placeholder="Área de Conhecimento" optionLabel="label" [showClear]="true" [(ngModel)]="event.area"
-                required name="area" #area></p-dropdown>
-            </div>
           </div>
           <div class="row-1">
             <div class="col-1">
@@ -87,16 +82,16 @@
             <div class="col-2">
               <h3>Enviar para</h3>
               <p-dropdown [style]="{'min-width':'230px'}" [options]="opInst" placeholder="Enviar  " optionLabel="label" [showClear]="true" [(ngModel)]="insta" name="insta"
-                (click)="filterByName(insta)"></p-dropdown>
-                <p-dropdown [style]="{'min-width':'230px'}" [options]="opFilter" optionLabel="label" [(ngModel)]="insta2" name="insta2"
-                (click)="filterByName2(insta2)"></p-dropdown>
+                required (click)="filterByName(insta)"></p-dropdown>
+                <p-dropdown [style]="{'min-width':'230px'}" [options]="opFilter" optionLabel="label"
+                            [(ngModel)]="insta2" name="insta2" required (click)="filterByName2(insta2)"></p-dropdown>
             </div>
           </div>
           <div class="row-2">
             <h3>Descrição</h3>
             <textarea rows="5" cols="80" pInputTextarea [(ngModel)]="event.descricao" required name="descricao" #descri></textarea>
           </div>
-          <button pButton type="button" label="Entrar" type=submit></button>
+          <button pButton type="button" label="Cadastrar" type=submit [disabled]="!eventForm.form.valid"></button>
         </div>
       </p-dialog>
     </form>

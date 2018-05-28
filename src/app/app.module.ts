@@ -58,6 +58,7 @@ import { AdmComponent } from './adm/adm.component';
     DropdownModule,
     InputTextareaModule,
     GrowlModule
+    
   ],
   providers: [LoginService, EventoService, OptionsService],
   bootstrap: [AppComponent]

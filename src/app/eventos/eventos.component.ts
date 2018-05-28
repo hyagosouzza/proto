@@ -8,12 +8,13 @@ import { EventoService } from '../shared/evento/evento.service';
 })
 export class EventosComponent implements OnInit {
 
-  event: {};
+  event: any = {};
 
   constructor(private evento: EventoService) { }
 
   ngOnInit() {
-    this.event = this.evento.getEventos();
+    this.evento.getAll().subscribe(eventObj => {console.log(eventObj)});
+    console.log(this.event);
   }
 
 }

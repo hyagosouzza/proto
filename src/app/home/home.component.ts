@@ -2,6 +2,7 @@ import { OptionsService } from './../shared/option/options.service';
 import { EventoService } from './../shared/evento/evento.service';
 import { Component, OnInit, Input } from '@angular/core';
 import { MenuItem } from 'primeng/api';                 //api
+import { SelectItem } from 'primeng/api';
 import { LoginService } from '../shared/login/login.service';
 import { Message } from 'primeng/components/common/api';
 import { NgForm } from '@angular/forms';
@@ -34,13 +35,14 @@ export class HomeComponent implements OnInit {
 
   menItens: MenuItem[];
 
-  opInst: MenuItem[] = [{ label: 'UNIDADE' },
-  { label: 'CURSO' },
-  { label: 'REGIONAL' }];
+  opInst: SelectItem[] = [{ label: 'Unidade', value: 'UNIDADE' },
+  { label: 'Curso', value: 'CURSO' },
+  { label: 'Regional', value: 'REGIONAL' }];
 
-  opArea: MenuItem[];
+  opArea: SelectItem[];
 
-  opFilter: MenuItem[];
+  opFilter: SelectItem[];
+  opAux: SelectItem[];
 
   display: boolean = false;
 
@@ -137,21 +139,32 @@ export class HomeComponent implements OnInit {
   }
 
   filterByName(insta) {
-    console.log(insta.label);
+    console.log(insta.value);
+
     for (let n = 0; n < this.options.length; n++) {
-      if (this.options[n].tipo === insta.label) {
-        this.opFilter = [{ label: this.options[n].nome }];
+      if (this.options[n].tipo === insta.value) {
+        var item = { label: this.options[n].nome, value: this.options[n].nome };
+        this.opAux.push(item);
+      }
+      else {
+        this.opAux = null;
       }
     }
+    this.opFilter = this.opAux;
   }
 
-  filterInstanciaByName(string) {
-    for(let n = 0; n < this.options.length; n++) {
-      if(this.options[n].nome === string) {
+  filterByName2(insta2) {
+    var n = 0;
+    for (n = 0; n < this.options.length; n++) {
+      if (this.options[n].nome === insta2.label) {
+        console.log('s');
         this.idInstancia = this.options[n].id;
-        
       }
     }
-    string.label = string.label;
+    if (n === this.options.length) {
+      console.log('tnc');
+      this.idInstancia = null;
+    }
+    insta2.label = insta2.value;
   }
 }

@@ -23,7 +23,7 @@
 
 <div class="ui-g">
   <div class="ui-g-4">
-    <p-panelMenu [model]="menItens" [style]="{'width':'300px'}"></p-panelMenu>
+    <p-panelMenu [model]="menItens" [style]="{'width':'300px','height':'200px'}"></p-panelMenu>
     <form #eventForm="ngForm" (ngSubmit)="evento(eventForm.value)">
       <p-dialog header="Divulgar Evento" [(visible)]="display2" [modal]="true" [responsive]="true" [width]="700" [minWidth]="200"
         [minY]="70">

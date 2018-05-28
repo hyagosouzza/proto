@@ -12,6 +12,7 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  idInstancia: any;
   para: boolean = false;
 
   event: any = {};
@@ -57,10 +58,15 @@ export class HomeComponent implements OnInit {
 
   eventos: boolean = true;
 
+  nomeSolicitante: string;
+
+  emailSolicitante: string;
+
+
   constructor(private id: LoginService, private eventoService: EventoService, private optionsService: OptionsService) { }
 
   evento(form: NgForm) {
-    this.eventoService.evento(form).subscribe(result => { }, error => console.error(error));
+    this.eventoService.evento(form, this.idInstancia, this.emailSolicitante, this.nomeSolicitante).subscribe(result => { }, error => console.error(error));
   }
 
   ngOnInit() {
@@ -69,6 +75,8 @@ export class HomeComponent implements OnInit {
     this.msgs.push({ severity: 'info', summary: 'Eventos', detail: 'Mensagens Novas' });
 
     this.id.getId(this.id.id).subscribe(result => {
+      this.nomeSolicitante = result.nome;
+      this.emailSolicitante = result.email;
       console.log("function");
       if (result.gerencia.length === 0) {
         this.items = this.items;
@@ -131,6 +139,15 @@ export class HomeComponent implements OnInit {
     for (let n = 0; n < this.options.length; n++) {
       if (this.options[n].tipo === insta.label) {
         this.opFilter = [{ label: this.options[n].nome }];
+      }
+    }
+  }
+
+  filterInstanciaByName(string) {
+    console.log(string.label);
+    for(let n = 0; n < this.options.length; n++) {
+      if(this.options[n].nome === string.label) {
+        this.idInstancia = this.options[n].id;
       }
     }
   }

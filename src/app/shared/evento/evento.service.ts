@@ -5,25 +5,30 @@ import { Observable } from 'rxjs/Observable';
 @Injectable()
 export class EventoService {
 
-  public API = '//192.168.1.167:8080/';
-  public eventoAPI = this.API + 'evento';
+  public API = '//189.123.150.41:8080/';
+  public eventoAPI = this.API + 'eventoes';
 
   constructor(private http: HttpClient) {
   }
 
   getAll(): Observable<any> {
-    return this.http.get('//192.168.1.167:8080/evento');
+    return this.http.get('//189.123.150.41:8080/eventoes');
   }
 
-  evento(evento: any): Observable<any> {
+  evento(evento: any, id: any, email: any, nome: any): Observable<any> {
     let result: Observable<Object>;
-    result = this.http.put(this.eventoAPI, evento);
+    evento.idInstancia = id;
+    console.log( evento.idInstancia);
+    evento.emailSolicitante = email;
+    evento.solicitante = nome;
+    result = this.http.post(this.eventoAPI, evento);
+    console.log(result);
     return result;
   }
 
   getEventos(): Observable<any> {
     let result: Observable<Object>;
-    result = this.http.get(this.API + 'evento/');
+    result = this.http.get(this.API + 'eventoes/');
     return result;
   }
 

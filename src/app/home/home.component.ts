@@ -144,11 +144,12 @@ export class HomeComponent implements OnInit {
   }
 
   filterInstanciaByName(string) {
-    console.log(string.label);
     for(let n = 0; n < this.options.length; n++) {
-      if(this.options[n].nome === string.label) {
+      if(this.options[n].nome === string) {
         this.idInstancia = this.options[n].id;
+        
       }
     }
+    string.label = string.label;
   }
 }

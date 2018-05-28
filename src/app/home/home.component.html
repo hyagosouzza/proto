@@ -65,7 +65,7 @@
             </div>
             <div class="col-2">
               <h3>Área de Conhecimento</h3>
-              <p-dropdown [options]="opArea" placeholder="Área de Conhecimento" optionLabel="label" [showClear]="true" [(ngModel)]="event.area"
+              <p-dropdown [style]="{'min-width':'230px'}" [options]="opArea" placeholder="Área de Conhecimento" optionLabel="label" [showClear]="true" [(ngModel)]="event.area"
                 required name="area" #area></p-dropdown>
             </div>
           </div>
@@ -86,9 +86,9 @@
             </div>
             <div class="col-2">
               <h3>Enviar para</h3>
-              <p-dropdown [options]="opInst" placeholder="Enviar " optionLabel="label" [showClear]="true" [(ngModel)]="insta" name="insta"
+              <p-dropdown [style]="{'min-width':'230px'}" [options]="opInst" placeholder="Enviar " optionLabel="label" [showClear]="true" [(ngModel)]="insta" name="insta"
                 (click)="filterByName(insta)"></p-dropdown>
-              <p-dropdown [options]="opFilter" placeholder="para" optionLabel="label" [showClear]="true" [(ngModel)]="idInstancia" required
+              <p-dropdown [style]="{'min-width':'230px'}" [options]="opFilter" placeholder="para" optionLabel="label" [showClear]="true" [(ngModel)]="idInstancia" required
                 name="idInstancia" (click)="filterInstanciaByName(idInstancia)"></p-dropdown>
             </div>
           </div>

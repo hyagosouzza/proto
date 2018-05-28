@@ -6,7 +6,7 @@ import { Observable } from 'rxjs/Observable';
 export class EventoService {
 
   public API = '//189.123.150.41:8080/';
-  public eventoAPI = this.API + 'evento';
+  public eventoAPI = this.API + 'eventoes';
 
   constructor(private http: HttpClient) {
   }
@@ -15,9 +15,15 @@ export class EventoService {
     return this.http.get('//189.123.150.41:8080/eventoes');
   }
 
-  evento(evento: any): Observable<any> {
+  evento(evento: any, id: any, email: any, nome: any, data: any): Observable<any> {
     let result: Observable<Object>;
-    result = this.http.put(this.eventoAPI, evento);
+    evento.idInstancia = id;
+    console.log( evento.idInstancia);
+    evento.emailSolicitante = email;
+    evento.solicitante = nome;
+    evento.datetimeDivulgacao = data;
+    result = this.http.post(this.eventoAPI, evento);
+    console.log(result);
     return result;
   }
 

@@ -23,7 +23,7 @@
 
 <div class="ui-g">
   <div class="ui-g-4">
-    <p-panelMenu [model]="menItens" [style]="{'width':'300px','height':'200px'}"></p-panelMenu>
+    <p-panelMenu [model]="menItens" [style]="{'width':'300px'}"></p-panelMenu>
     <form #eventForm="ngForm" (ngSubmit)="evento(eventForm.value)">
       <p-dialog header="Divulgar Evento" [(visible)]="display2" [modal]="true" [responsive]="true" [width]="700" [minWidth]="200"
         [minY]="70">
@@ -35,31 +35,31 @@
             </div>
             <div class="col-2">
               <h3>Escopo da Divulgação</h3>
-              <p-radioButton name="group2" value="apegresso" label="Apenas Egresso" inputId="opt1" [(ngModel)]="event.escopo" required
+              <p-radioButton name="group2" value="APENAS_EGRESSOS" label="Apenas Egresso" inputId="opt1" [(ngModel)]="event.escopo" required
                 name="escopo" #escopo></p-radioButton>
               <br>
-              <p-radioButton name="group2" value="comunidade" label="Comunidade" inputId="opt1" [(ngModel)]="event.escopo" required name="escopo"
+              <p-radioButton name="group2" value="COMUNIDADE" label="Comunidade" inputId="opt1" [(ngModel)]="event.escopo" required name="escopo"
                 #escopo></p-radioButton>
               <br>
-              <p-radioButton name="group2" value="forescopo" label="Fora de Escopo" inputId="opt1" [(ngModel)]="event.escopo" required
+              <p-radioButton name="group2" value="FORA_DO_ESCOPO" label="Fora de Escopo" inputId="opt1" [(ngModel)]="event.escopo" required
                 name="escopo" #escopo></p-radioButton>
             </div>
           </div>
           <div class="row-1">
             <div class="col-1">
               <h3>Tipo Evento</h3>
-              <p-radioButton name="group3" value="noticia" label="Notícia" inputId="opt2" [(ngModel)]="event.tipo" required name="tipo"
+              <p-radioButton name="group3" value="NOTICIA" label="Notícia" inputId="opt2" [(ngModel)]="event.tipo" required name="tipo"
                 #tipo></p-radioButton>
               <br>
-              <p-radioButton name="group3" value="palestra" label="Palestra" inputId="opt2" [(ngModel)]="event.tipo" required name="tipo"
+              <p-radioButton name="group3" value="PALESTRA" label="Palestra" inputId="opt2" [(ngModel)]="event.tipo" required name="tipo"
                 #tipo></p-radioButton>
               <br>
-              <p-radioButton name="group3" value="curso" label="Curso" inputId="opt2" [(ngModel)]="event.tipo" required name="tipo" #tipo></p-radioButton>
+              <p-radioButton name="group3" value="CURSO" label="Curso" inputId="opt2" [(ngModel)]="event.tipo" required name="tipo" #tipo></p-radioButton>
               <br>
-              <p-radioButton name="group3" value="emprego" label="Orp. Emprego" inputId="opt2" [(ngModel)]="event.tipo" required name="tipo"
-                #tipo></p-radioButton>
+              <p-radioButton name="group3" value="OPORTUNIDADE_EMPREGO" label="Orp. Emprego" inputId="opt2" [(ngModel)]="event.tipo" required
+                name="tipo" #tipo></p-radioButton>
               <br>
-              <p-radioButton name="group3" value="diversos" label="Diversos" inputId="opt2" [(ngModel)]="event.tipo" required name="tipo"
+              <p-radioButton name="group3" value="DIVERSOS" label="Diversos" inputId="opt2" [(ngModel)]="event.tipo" required name="tipo"
                 #tipo></p-radioButton>
               <br>
             </div>
@@ -88,15 +88,15 @@
               <h3>Enviar para</h3>
               <p-dropdown [options]="opInst" placeholder="Enviar " optionLabel="label" [showClear]="true" [(ngModel)]="insta" name="insta"
                 (click)="filterByName(insta)"></p-dropdown>
-              <p-dropdown [options]="opFilter" placeholder="para" optionLabel="label" [showClear]="true" [(ngModel)]="event.inst" required
-                name="inst" #inst></p-dropdown>
+              <p-dropdown [options]="opFilter" placeholder="para" optionLabel="label" [showClear]="true" [(ngModel)]="idInstancia" required
+                name="idInstancia" (click)="filterInstanciaByName(idInstancia)"></p-dropdown>
             </div>
           </div>
           <div class="row-2">
             <h3>Descrição</h3>
-            <textarea rows="5" cols="80" pInputTextarea [(ngModel)]="event.descri" required name="descri" #descri></textarea>
+            <textarea rows="5" cols="80" pInputTextarea [(ngModel)]="event.descricao" required name="descricao" #descri></textarea>
           </div>
-          <button pButton type="button" label="Entrar" type="submit" [disabled]="!eventForm.form.valid"></button>
+          <button pButton type="button" label="Entrar" type=submit></button>
         </div>
       </p-dialog>
     </form>
